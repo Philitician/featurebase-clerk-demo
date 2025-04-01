@@ -1,4 +1,4 @@
-import { type Metadata } from "next";
+import { FeedbackWrapper } from "@/components/feedback-wrapper";
 import {
   ClerkProvider,
   SignInButton,
@@ -7,7 +7,9 @@ import {
   SignedOut,
   UserButton,
 } from "@clerk/nextjs";
+import { type Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import { Suspense } from "react";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -43,6 +45,9 @@ export default function RootLayout({
             </SignedOut>
             <SignedIn>
               <UserButton />
+              <Suspense>
+                <FeedbackWrapper />
+              </Suspense>
             </SignedIn>
           </header>
           {children}
